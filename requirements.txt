@@ -1,0 +1,7 @@
+click
+itsdangerous
+jinja2
+werkzeug
+wheel
+flask
+python-dotenv
