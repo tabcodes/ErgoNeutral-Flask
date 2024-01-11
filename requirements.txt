@@ -5,3 +5,5 @@ werkzeug
 wheel
 flask
 python-dotenv
+Flask-SQLAlchemy
+Flask-Migrate
