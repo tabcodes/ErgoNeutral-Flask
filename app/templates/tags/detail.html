@@ -1,0 +1,35 @@
+{% extends 'layout/master.html' %} {% load static %}
+{% block content %}
+<script src="{% static 'js/prism.js'%}"></script>
+
+<link rel="stylesheet" href="{% static 'css/prism.css' %}" />
+<div class="container">
+  <div class="col-md-9 pt-4 line-numbers">
+    {% if posts.count > 0 %}
+      {% for post in posts %}
+
+      <hr>
+      <h1>
+        <a class="post-link text-decoration-none link-dark" href="/posts/{{post.id}}/">{{ post.title }}</a>
+      </h1>
+      <p class="text-black-50">{{post.created_at|date:'N j, Y'}}
+        {% if post.updated_at|date:'N j, Y' != post.created_at|date:'N j, Y' %}
+        | Updated {{post.updated_at|date:'N j, Y'}}
+      {% endif %}
+      </p>
+      {% for tag in post.tags.all %}
+      
+      <a href="#"><span class="badge bg-secondary post-tag">{{ tag.name|title }}</span></a>
+      {% endfor %}
+      {% if post.excerpt %}
+        <p class="">{{post.excerpt}}</p>
+      {% endif %}
+      {% endfor %}
+      {% else %}
+    {% endif %}
+
+  </div>
+
+</div>
+
+{% endblock %}

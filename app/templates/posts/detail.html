@@ -1,0 +1,29 @@
+{% extends 'layout/master.html' %}
+{% load static %}
+{% block title %} ErgoNeutral - {{post.title}} {% endblock %}
+
+{% block content %}
+<script src="{% static 'js/prism.js'%}"></script>
+
+<link rel="stylesheet" href="{% static 'css/prism.css' %}" />
+
+<div class="container">
+  <div class="col-md-9 pt-4 line-numbers">
+    <div>
+      <h3 class="post-title">{{post.title}}</h3>
+      <h6 class="text-black-50 post-publish-date">Published on {{post.created_at|date:'N j, Y'}}</h6>
+      {% if post.updated_at != post.created_at %}
+        <h6 class="text-black-50 post-update-date">Updated {{post.updated_at|date:'N j, Y'}}
+      {% endif %}
+      <hr>
+      <div class="tags-list mb-2">
+        {% for tag in post.tags.all %}
+          <a href="/tag/{{tag.slug}}"><span class="badge bg-secondary post-tag">{{ tag.name|title }}</span></a>
+        {% endfor %}
+      </div>
+    </div>
+    {{ post.body | safe }}
+  </div>
+</div>
+
+{% endblock %}

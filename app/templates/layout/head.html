@@ -1,0 +1,15 @@
+<head>
+  {# Load the tag library #}
+  {% load bootstrap5 %}
+  
+  {# Load CSS and JavaScript #}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  
+  {# Display django.contrib.messages as Bootstrap alerts #}
+  {% bootstrap_messages %}
+  {% load static %}
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <title>ErgoNeutral</title>
+</head>
